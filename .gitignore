@@ -1,0 +1,8 @@
+# Model files - symlinks to HuggingFace cache
+# Download from https://huggingface.co/ai4bharat/IndicF5
+models/model.safetensors
+models/vocab.txt
+
+# OS junk
+.DS_Store
+Thumbs.db
