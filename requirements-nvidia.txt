@@ -1,0 +1,36 @@
+# requirements-nvidia.txt
+# NVIDIA CUDA dependencies for IndicF5-GUI
+#
+# === Quick Start ===
+#
+#   conda create -n indicf5 python=3.10 -y
+#   conda activate indicf5
+#
+#   # 1. Install PyTorch with CUDA 12.4
+#   pip install torch==2.5.1 torchvision torchaudio \
+#     --index-url https://download.pytorch.org/whl/cu124
+#
+#   # 2. Install the IndicF5 package
+#   pip install git+https://github.com/ai4bharat/IndicF5.git
+#
+#   # 3. Install remaining deps
+#   pip install -r requirements-nvidia.txt
+#
+#   # 4. Download model assets (one-time)
+#   huggingface-cli login
+#   python -c "from huggingface_hub import hf_hub_download; \
+#     hf_hub_download('ai4bharat/IndicF5', 'model.safetensors'); \
+#     hf_hub_download('ai4bharat/IndicF5', 'checkpoints/vocab.txt')"
+#
+#   # 5. Run
+#   python indicf5_app.py
+#
+# === Dependencies ===
+
+gradio>=6.0
+numpy
+soundfile>=0.12
+huggingface_hub
+safetensors
+transformers
+torchcodec
