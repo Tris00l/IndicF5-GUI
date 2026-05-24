@@ -64,6 +64,19 @@ Open `http://localhost:7860` in your browser.
 | Vocoder | [charactr/vocos-mel-24khz](https://huggingface.co/charactr/vocos-mel-24khz) |
 | Vocabulary | IndicF5 `checkpoints/vocab.txt` (2545 tokens) |
 
+## Citation
+
+If you use this work, please cite the original model:
+
+```bibtex
+@misc{AI4Bharat_IndicF5_2025,
+  author       = {Praveen S V and Srija Anand and Soma Siddhartha and Mitesh M. Khapra},
+  title        = {IndicF5: High-Quality Text-to-Speech for Indian Languages},
+  year         = {2025},
+  url          = {https://github.com/AI4Bharat/IndicF5},
+}
+```
+
 ## Hardware
 
 - **GPU**: AMD RX 7900 XTX (gfx1100 / RDNA3)
