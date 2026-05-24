@@ -36,13 +36,33 @@ IndicF5-GUI/
 │   └── ...
 ├── README.md
 ├── SETUP.md                   # ROCm (AMD) setup
+├── requirements-rocm.txt      # ROCm (AMD) setup
 ├── requirements-nvidia.txt    # CUDA (NVIDIA) setup
 └── .gitignore
 ```
 
 ## Quick Start
 
-**AMD GPU (ROCm):** see [SETUP.md](SETUP.md) for the full setup guide.
+**AMD GPU (ROCm):**
+```bash
+conda create -n indicf5 python=3.10 -y
+conda activate indicf5
+pip install torch==2.9.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.4
+pip install git+https://github.com/ai4bharat/IndicF5.git
+pip install -r requirements-rocm.txt
+# Remove torchcodec (incompatible with ROCm torch)
+pip uninstall torchcodec -y 2>/dev/null || true
+# Set env var for RDNA3 (gfx1100) if needed
+export HSA_OVERRIDE_GFX_VERSION=11.0.0
+# Download model (one-time)
+huggingface-cli login
+python -c "from huggingface_hub import hf_hub_download; \
+  hf_hub_download('ai4bharat/IndicF5', 'model.safetensors'); \
+  hf_hub_download('ai4bharat/IndicF5', 'checkpoints/vocab.txt')"
+python indicf5_app.py
+```
+
+See [SETUP.md](SETUP.md) for a detailed walkthrough.
 
 **NVIDIA GPU (CUDA):**
 ```bash
@@ -94,7 +114,7 @@ If you use this work, please cite the original model:
 **AMD (ROCm)**
 - **GPU**: AMD RX 7900 XTX (gfx1100 / RDNA3)
 - **ROCm**: 7.2 / HIP 7.2
-- **PyTorch**: 2.5.1+rocm6.4
+- **PyTorch**: 2.9.1+rocm6.4
 
 **NVIDIA (CUDA)**
 - **GPU**: any CUDA-compatible NVIDIA GPU

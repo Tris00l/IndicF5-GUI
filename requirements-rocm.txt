@@ -1,0 +1,41 @@
+# requirements-rocm.txt
+# AMD ROCm dependencies for IndicF5-GUI
+#
+# === Quick Start ===
+#
+#   conda create -n indicf5 python=3.10 -y
+#   conda activate indicf5
+#
+#   # 1. Install PyTorch with ROCm 6.4
+#   pip install torch==2.9.1 torchvision torchaudio \
+#     --index-url https://download.pytorch.org/whl/rocm6.4
+#
+#   # 2. Install the IndicF5 package
+#   pip install git+https://github.com/ai4bharat/IndicF5.git
+#
+#   # 3. Install remaining deps
+#   pip install -r requirements-rocm.txt
+#
+#   # 4. Remove torchcodec (incompatible with ROCm torch)
+#   pip uninstall torchcodec -y 2>/dev/null || true
+#
+#   # 5. Set env var for RDNA3 (gfx1100) if needed
+#   export HSA_OVERRIDE_GFX_VERSION=11.0.0
+#
+#   # 6. Download model assets (one-time)
+#   huggingface-cli login
+#   python -c "from huggingface_hub import hf_hub_download; \
+#     hf_hub_download('ai4bharat/IndicF5', 'model.safetensors'); \
+#     hf_hub_download('ai4bharat/IndicF5', 'checkpoints/vocab.txt')"
+#
+#   # 7. Run
+#   python indicf5_app.py
+#
+# === Dependencies ===
+
+gradio>=6.0
+numpy
+soundfile>=0.12
+huggingface_hub
+safetensors
+transformers
